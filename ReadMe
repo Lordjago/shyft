@@ -1,0 +1,19 @@
+//Run npm install
+// "npm start" to start server
+// "npm test"  to run test
+
+
+//End Points
+ // => /github/repo_info/owner/repo_name
+            // '&' is used as delimetr to pass in array of owner name and repo name
+
+ //Test Sample 
+        // => http://localhost:8080/github/repo_info/tradotech/trado_estate
+        // => http://localhost:8080/github/repo_info/tradotech&goldbergyoni/trado_estate&javascript-testing-best-practices
+
+// => /search/searchString 
+    //Test Sample
+        //http://localhost:8080/search/Growing
+        //http://localhost:8080/search/Activities
+
+//Q2 solution might not be the best solution ; )
