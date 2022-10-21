@@ -3,7 +3,7 @@ import ErrorResponse from "../utils/errorResponse.js";
 const errorHandler = (err, req, res, next) => {
   let error = { ...err };
   error.message = err.message;
-//   console.log(err);
+  console.log(err);
 
   //Github API error response
   if (err.statusCode === 404) {
