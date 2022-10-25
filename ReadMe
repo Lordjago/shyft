@@ -1,1 +1,125 @@
 
+## Documentation
+
+https://documenter.getpostman.com/view/16636990/2s84LLxsrf
+
+# Tasks
+
+Task 1: create an API endpoint that returns the number of stars for a given Github repository.
+
+Requirements:
+
+Build an API endpoint that:
+
+Implements a GET request with a sensible path (for example, /github/repo_info)
+
+Takes in a parameter of "repo_name" (or repoName, if you prefer)
+
+This should be the organization/owner name, and then the repo name
+
+Example: "facebook/react"
+
+Queries the Github API for that repo name
+
+Parses the response, and then returns (as JSON):
+
+Repo name (same as passed in)
+
+Repo Description
+
+Number of stars
+
+Return a 404 if the given repository is not found
+
+Add tests
+
+Extend it to take in (and return) an array of repos, or simply an owner/organization name, and return the above data for all of their repos.
+
+Task 2: given this CSV as a model, implement a NodeJs script including a Javascript function that would be the backend for a search-as-you-type widget.
+read and parse the CSV file (efficiently), we just care about the text column, ignore the other one
+
+( do the reading/parsing manually, do not use any of the CSV libs out there )
+write a function that given a search term produces a json with search results that match the data from the CSV file
+
+how would you test it?
+
+
+## API ENDPOINTS
+```http
+GET /github/repo_info/owner/repo_name
+```
+Test Sample 
+
+```http
+GET /github/repo_info/Lordjago/shyft
+```
+& is used as delimeter to passing in array of repo
+```http
+GET github/repo_info/charlax&goldbergyoni/professional-programming&javascript-testing-best-practices
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `owner` | `string` | **Required**. |
+| `repo_name` | `string` | **Required**. |
+
+```http
+GET /search/searchString
+```
+
+Test Sample
+
+```http
+GET /search/Growing
+```
+```http
+GET /search/Activities
+```
+
+| Parameter | Type | Description |
+| :--- | :--- | :--- |
+| `searchString` | `string` | **Required**. |
+
+## Responses
+
+```javascript
+[
+  {
+    "Repo Name": "dehilltop",
+    "Repo Description": null,
+    "Number of Star": 0
+  }
+]
+```
+& 
+
+```javascript
+{
+  "ValueFrom": "Value from new request",
+  "searchString": [
+    "\"Growing of cereals (except rice)",
+    "Growing of rice\r\n1130",
+    "\"Growing of vegetables and melons",
+    "Growing of sugar cane\r\n1150",
+    "Growing of tobacco\r\n1160",
+    "Growing of fibre crops\r\n1190",
+    "Growing of other non-perennial crops\r\n1210"
+  ]
+}
+```
+
+The `success` attribute describes if the transaction was successful or not.
+
+The `data` attribute contains any other metadata associated with the response. This will be an escaped string containing JSON data.
+
+## Status Codes
+
+Gophish returns the following status codes in its API:
+
+| Status Code | Description |
+| :--- | :--- |
+| 200 | `OK` |
+| 201 | `CREATED` |
+| 400 | `BAD REQUEST` |
+| 404 | `NOT FOUND` |
+| 500 | `INTERNAL SERVER ERROR` |
